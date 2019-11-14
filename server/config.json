@@ -1,0 +1,4 @@
+{
+  "httpPort": 8080,
+  "dbUrl": "mongodb://localhost:27017/fdj"
+}
