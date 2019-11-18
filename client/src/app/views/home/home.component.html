@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="main-container">
+  <div class="main-container search-container">
+    <input type="text" placeholder="League name ..." [formControl]="searchControl">
+  </div>
+  <div class="team-list">
+    <a *ngFor="let team of teamList" [routerLink]="['team-players', team._id]" class="team-link">
+      <img [src]="team.thumbnail" [alt]="team.name">
+    </a>
+    <span *ngIf="!teamList.length">No results...</span>
+  </div>
+</div>

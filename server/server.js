@@ -4,8 +4,14 @@ const app = express();
 const config = require('./config');
 const dbHelper = require('./services/database.service');
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Methods', 'GET');
+  next()
+});
+
 app.get('/teams', async (req, res) => {
-  console.log('req.query', req.query);
   const search = req.query.leagueName || '';
   try {
     const teams = await dbHelper.getTeamsByLeagueName(search);

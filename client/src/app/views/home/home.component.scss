@@ -1,0 +1,30 @@
+.search-container {
+  position: fixed;
+  box-sizing: border-box;
+  background-color: grey;
+  padding: 10px;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+  }
+}
+
+.team-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 60px 0 15px;
+}
+
+.team-link {
+  display: block;
+  width: 40%;
+
+  img {
+    width: 100%;
+  }
+}
