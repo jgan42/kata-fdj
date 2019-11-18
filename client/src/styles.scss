@@ -10,3 +10,13 @@ body {
   margin: 0 auto;
   background-color: lightgray;
 }
+
+.fixed-header {
+  @extend .main-container;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  background-color: grey;
+  padding: 10px;
+}
+

@@ -1,16 +1,9 @@
-.search-container {
-  position: fixed;
+.team-search-input {
+  width: 100%;
   box-sizing: border-box;
-  background-color: grey;
-  padding: 10px;
-
-  input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-  }
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
 }
 
 .team-list {

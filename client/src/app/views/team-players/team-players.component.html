@@ -1,1 +1,18 @@
-<p>team-players works!</p>
+<div class="main-container">
+  <div class="fixed-header">
+    <a href="javascript:void(0)" (click)="goBack()" class="back-button">< Back</a>
+    <span>{{ teamPlayers && teamPlayers.name }}</span>
+  </div>
+  <div *ngIf="teamPlayers" class="team-list">
+    <div *ngFor="let player of teamPlayers.players" class="player-card">
+      <img [src]="player.thumbnail" [alt]="player.name">
+      <div>
+        <div class="name">{{ player.name }}</div>
+        <div>{{ player.position }}</div>
+        <div>birthDate: {{ player.born | date:'yyyy-MM-dd' }}</div>
+        <div>price: {{ player.signin.amount }}{{ player.signin.currency }}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!teamPlayers" class="team-list">Loading...</div>
+</div>

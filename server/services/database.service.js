@@ -22,7 +22,8 @@ class DatabaseService {
   async getPlayersByTeamId(teamId) {
     try {
       const team = await this._getTeam(teamId);
-      return this._getPlayers(team.players);
+      const players = await this._getPlayers(team.players);
+      return { name: team.name, players };
     } catch (e) {
       console.log('getPlayersByIds Error:', e);
       throw e;
