@@ -12,19 +12,17 @@ class DatabaseService {
     try {
       const leagues = await this._getLeaguesByName(search);
       const teamIds = leagues.reduce((ids, league) => ids.concat(league.teams), []);
-      return this._getTeamsByIds(teamIds);
+      return this._getTeams(teamIds);
     } catch (e) {
       console.log('getTeamsByLeagueName Error:', e);
       throw e;
     }
   }
 
-  async getPlayersByIds(stringList) {
+  async getPlayersByTeamId(teamId) {
     try {
-      const playerIds = stringList.split(',').map(id => new ObjectID(id));
-      console.log('playerIds', playerIds);
-      const query = { _id: { $in: playerIds } };
-      return this.db.collection('players').find(query).toArray();
+      const team = await this._getTeam(teamId);
+      return this._getPlayers(team.players);
     } catch (e) {
       console.log('getPlayersByIds Error:', e);
       throw e;
@@ -36,10 +34,18 @@ class DatabaseService {
     return this.db.collection('leagues').find(query).toArray();
   }
 
-  _getTeamsByIds(ids) {
+  _getTeam(id) {
+    return this.db.collection('teams').findOne(new ObjectID(id));
+  }
+
+  _getTeams(ids) {
     const query = { _id: { $in: ids } };
-    console.log('ids', ids);
     return this.db.collection('teams').find(query).toArray();
+  }
+
+  _getPlayers(ids) {
+    const query = { _id: { $in: ids } };
+    return this.db.collection('players').find(query).toArray();
   }
 }
 

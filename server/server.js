@@ -15,10 +15,10 @@ app.get('/teams', async (req, res) => {
   }
 });
 
-app.get('/players', async (req, res) => {
-  const stringList = req.query.playerIds || '';
+app.get('/team-players', async (req, res) => {
+  const teamId = req.query.teamId || '';
   try {
-    const players = await dbHelper.getPlayersByIds(stringList);
+    const players = await dbHelper.getPlayersByTeamId(teamId);
     res.send(players);
   } catch (e) {
     res.status(520).send(e);
